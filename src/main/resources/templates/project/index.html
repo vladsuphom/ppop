@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="dashboard-fragments :: head"></head>
+<body>
+
+<div class="wrapper">
+    <div th:replace="dashboard-fragments :: sidebar"></div>
+
+    <div class="main-panel">
+        <nav th:replace="dashboard-fragments :: nav"></nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row card">
+                            <div class="col-md-10 col-md-offset-1">
+                            <div class="header">
+                                <h4 class="title">Текущие проекты</h4>
+                                <p class="category">Кликни для тетализации на людой проект.</p>
+                            </div>
+
+                            <div th:if="${projects} and ${projects.size()}" class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <th>Имя проекта</th>
+                                    <th>Тип роекта</th>
+                                    <th>Статус проекта</th>
+                                    <th>Клиент</th>
+                                    <th>Выручка($)</th>
+
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="project : ${projects}">
+                                        <td>
+                                            <a th:href="@{ '/project/edit/' + ${project.id} }"
+                                               th:text="${project.name}">
+                                            </a>
+                                        </td>
+                                        <td th:text="${project.projectType.name}"></td>
+                                        <td th:text="${project.projectStatus.name}"></td>
+                                        <td th:text="${project.customer.fName + ' ' + project.customer.lName}"></td>
+                                        <td th:text="${project.sales}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p th:unless="${projects} and ${projects.size()}">Нет проектов еще.</p>
+
+
+                    </div><!--/ end col-md-12-->
+                </div><!--/ end row-->
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!--Add Customers button-->
+                        <div class="text-center">
+                            <a th:href="@{/project/add}" class="btn btn-info btn-fill btn-wd">Добавить проект</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div><!--/ end container-fluid-->
+        </div><!--/ end content-->
+
+        <footer th:replace="dashboard-fragments :: footer"></footer>
+    </div><!--/ end main panel-->
+</div><!--/ end wrapper-->
+
+</body>
+
+</html>

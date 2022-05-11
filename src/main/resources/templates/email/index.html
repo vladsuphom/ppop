@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="dashboard-fragments :: head"></head>
+<body>
+
+<div class="wrapper">
+    <div th:replace="dashboard-fragments :: sidebar"></div>
+
+    <div class="main-panel">
+        <nav th:replace="dashboard-fragments :: nav"></nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row card">
+                        <div class="col-md-10 col-md-offset-1">
+
+                                <div class="header">
+                                    <h4 class="title">Уведомления</h4>
+                                    <p class="category">Почта</p>
+                                </div>
+
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-hover">
+                                        <!--<thead>-->
+                                            <!--<th>From</th>-->
+                                            <!--<th>Subject</th>-->
+                                            <!--<th>Excerpt</th>-->
+                                            <!--<th>Last Contact</th>-->
+                                        <!--</thead>-->
+                                        <tbody>
+                                            <tr>
+                                                <td><b>Зданчук Николай</b></td>
+                                                <td><b>Re: Logo Proof v1</b></td>
+                                                <td><b>Мне это нравится. Думаешь, это была бы хорошая идея...</b></td>
+                                                <td><b>9:20 pm</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Олизарович Александр</td>
+                                                <td>Re: Проект закончен!</td>
+                                                <td>Я все не могу никак сдать проект по Степину...</td>
+                                                <td>Июнь 20</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Новость!</b></td>
+                                                <td><b>ШОК!</b></td>
+                                                <td><b>Джони Депп все еще судится...</b></td>
+                                                <td><b>Июнь 19</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b></b></td>
+                                                <td><b>Добро пожаловать в игру Кальмара</b></td>
+                                                <td><b>Congrats! You're officially a Squarespace Circle member...</b></td>
+                                                <td><b>Июнь 16</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Екатерина Лебедевич</td>
+                                                <td>Re: Добро пожаловать за границу!</td>
+                                                <td>Не могу дождаться начала!...</td>
+                                                <td>Июнь 12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HelloSign</td>
+                                                <td>Contract has been signed by all parties</td>
+                                                <td>This automated email is confirming that your contract has been...</td>
+                                                <td>Июнь 10</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                        </div>
+
+                            </div><!--/ end row-->
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!--Add Customers button-->
+                        <div class="text-center">
+                            <a th:href="@{/project/add}" class="btn btn-info btn-fill btn-wd">COMPOSE</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div><!--/ end container-fluid-->
+        </div><!--/ end content-->
+
+        <footer th:replace="dashboard-fragments :: footer"></footer>
+    </div><!--/ end main panel-->
+</div><!--/ end wrapper-->
+
+</body>
+
+</html>

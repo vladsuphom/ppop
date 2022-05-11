@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="dashboard-fragments :: head"></head>
+<body>
+
+<div class="wrapper">
+    <div th:replace="dashboard-fragments :: sidebar"></div>
+
+    <div class="main-panel">
+        <nav th:replace="dashboard-fragments :: nav"></nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row card">
+                    <div class="col-md-10 col-md-offset-1">
+                            <div class="header">
+                                <h4 class="title">Существующие клиенты!</h4>
+                                <p class="category">Кликни на имя любого клиента, для получения информации.</p>
+                            </div>
+
+                            <div th:if="${customers} and ${customers.size()}" class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>Имя</th>
+                                        <th>Email</th>
+                                        <th>Телефон</th>
+                                        <th>Статус</th>
+                                    </thead>
+                                        <tbody>
+                                        <tr th:each="customer : ${customers}">
+                                            <td>
+                                                <a th:href="@{ '/customer/edit/' + ${customer.id} }">
+                                                    <span th:text="${customer.fName}"></span>
+                                                    <span th:text="${customer.lName}"></span>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a th:href="@{ 'mailto:' + ${customer.email}}">
+                                                    <span th:text="${customer.email}"></span>
+                                                </a>
+                                            </td>
+
+                                            <td th:text="${customer.phoneNumber}"></td>
+                                            <td th:if="${customer.customerStatus != null}" th:text="${customer.customerStatus.name}"></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p th:unless="${customers} and ${customers.size()}">Еще нет заказчиков</p>
+
+
+                </div><!--/ end col-md-12-->
+            </div><!--/ end row-->
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!--Add Customers button-->
+                        <div class="text-center">
+                            <a th:href="@{/customer/add}" class="btn btn-info btn-fill btn-wd">Добавить заказчиков</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+</div><!--/ end container-fluid-->
+</div><!--/ end content-->
+
+        <footer th:replace="dashboard-fragments :: footer"></footer>
+</div><!--/ end main panel-->
+</div><!--/ end wrapper-->
+
+</body>
+
+</html>

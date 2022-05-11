@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="dashboard-fragments :: head"></head>
+<body>
+
+<div class="wrapper">
+    <div th:replace="dashboard-fragments :: sidebar"></div>
+
+    <div class="main-panel">
+        <nav th:replace="dashboard-fragments :: nav"></nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <!--# of to-dos-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-warning text-center">
+                                            <i class="ti-check-box"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Задания</p>
+                                            5
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <i class="ti-reload"></i> Обновить сейчас
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--# of unread emails-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-danger text-center">
+                                            <i class="ti-email"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Непрочитанные</p>
+                                            23
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <i class="ti-timer"></i> За последний час
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--monthly revenue-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-success text-center">
+                                            <i class="ti-wallet"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Общая выручка</p>
+                                            $<span th:text="${yearlyRevenue}">2,345</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <i class="ti-calendar"></i> Последний день
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--storage-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="icon-big icon-info text-center">
+                                            <i class="ti-server"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="numbers">
+                                            <p>Склад</p>
+                                            100
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <i class="ti-reload"></i> Обнови сейчас
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+
+                    <!---->
+                    <!--Project status analytics-->
+                    <!---->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Обзор проекта</h4>
+                                <p class="category">Ежемесячная статистика по статусу проекта</p>
+                            </div>
+                            <div class="content">
+                                <div id="chartProjectStatuses" class="ct-chart ct-perfect-fourth"></div>
+
+                                <div class="footer">
+                                    <div class="chart-legend">
+
+                                        <i class="fa fa-circle text-success"></i> Выполнено
+                                        <i class="fa fa-circle text-info"></i> в процессе
+                                        <i class="fa fa-circle text-primary"></i> оплачиваемый
+                                        <i class="fa fa-circle text-warning"></i> Booked
+                                        <i class="fa fa-circle text-danger"></i> Contacted
+                                        <i class="fa fa-circle"></i> Lead
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="ti-timer"></i> Обновлено 2 дня назад
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end of project status analytics-->
+
+                    <!---->
+                    <!--Sales according to project type analytics-->
+                    <!---->
+                    <div class="col-md-6">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">2017 Sales</h4>
+                                <p class="category">Monthly revenue by project types</p>
+                            </div>
+                            <div class="content">
+                                <div id="chartMonthlySales" class="ct-chart"></div>
+
+                                <div class="footer">
+                                    <div class="chart-legend">
+                                        <i class="fa fa-circle text-info"></i> Branding
+                                        <i class="fa fa-circle text-warning"></i> Web Design
+                                        <i class="fa fa-circle text-success"></i> SEO
+                                        <i class="fa fa-circle text-danger"></i> Customization
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="ti-check"></i> Updated yesterday
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--end of project type analytics-->
+                </div> <!--end of section 2-->
+
+
+            <!---->
+            <!--Customer analytics: booked vs lost-->
+            <!---->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Customers</h4>
+                            <p class="category">Conversion rate by month</p>
+                        </div>
+                        <div class="content">
+                            <div id="chartCustomers" class="ct-chart"></div>
+                            <div class="footer">
+                                <div class="chart-legend">
+                                    <i class="fa fa-circle text-info"></i> Lead
+                                    <i class="fa fa-circle text-danger"></i> Converted
+                                    <i class="fa fa-circle text-warning"></i> Lost
+                                </div>
+                                <hr>
+                                <div class="stats">
+                                    <i class="ti-reload"></i> Updated 3 minutes ago
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+        </div>
+
+
+        <footer th:replace="dashboard-fragments :: footer"></footer>
+
+    </div> <!-- /end main-panel-->
+</div> <!-- /end wrapper-->
+</body>
+
+<script th:inline="javascript">
+    <!-------------------------------------------------------------------->
+    <!-- project status chart -->
+    <!-------------------------------------------------------------------->
+
+    Chartist.Pie('#chartProjectStatuses', {
+        labels: /*[[${projectStatusLabels}]]*/ ['30%','22%','6%', '10%', '15%', '13%'],
+        series: /*[[${projectStatusSeries}]]*/ [30, 22, 6, 10, 15, 13]
+    });
+
+</script>
+
+<script th:inline="javascript">
+<!-------------------------------------------------------------------->
+<!-- sales chart according to project type-->
+<!-------------------------------------------------------------------->
+
+    var salesStats = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      series: [[${salesSeries}]]
+    };
+
+    var options = {
+        seriesBarDistance: 10,
+        axisX: {
+            showGrid: false
+        },
+        height: "245px"
+    };
+
+    var responsiveOptions = [
+      ['screen and (max-width: 640px)', {
+        seriesBarDistance: 5,
+        axisX: {
+          labelInterpolationFnc: function (value) {
+            return value[0];
+          }
+        }
+      }]
+    ];
+
+    Chartist.Line('#chartMonthlySales', salesStats, options, responsiveOptions);
+
+</script>
+
+<script th:inline="javascript">
+    <!-------------------------------------------------------------------->
+    <!-- customer analytics chart -->
+    <!-------------------------------------------------------------------->
+        var customerStats = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      series: [[${customerSeries}]]
+        };
+
+        var options = {
+          lineSmooth: false,
+          low: 0,
+          high: 30,
+          showArea: false,
+          height: "245px",
+          axisX: {
+            showGrid: false,
+          },
+          lineSmooth: Chartist.Interpolation.simple({
+            divisor: 3,
+          }),
+          showLine: true,
+          showPoint: false,
+        };
+
+        var responsiveOptions = [
+          ['screen and (max-width: 640px)', {
+            axisX: {
+              labelInterpolationFnc: function (value) {
+                return value[0];
+              }
+            }
+          }]
+        ];
+
+        Chartist.Line('#chartCustomers', customerStats, options, responsiveOptions);
+
+</script>
+
+</html>

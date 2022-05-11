@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="dashboard-fragments :: head"></head>
+<body>
+
+<div class="wrapper homepage-background">
+
+    <nav th:replace="page-fragments :: nav"></nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row centered-block">
+                    <div>
+                        <!--<h1 class="text-center">ClienTell</h1>-->
+                        <div class="text-center" id="main-logo">
+                            <img th:src="@{/img/ClienTell-Logo-2.png}" alt="ClienTell logo" width="200">
+                        </div>
+
+
+
+                        <br>
+                        <div class="text-center">
+                            <a th:href="@{/register}" class="btn btn-info btn-fill btn-wd center">Начать</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div><!--/ end container-fluid-->
+        </div><!--/ end content-->
+        <footer th:replace="page-fragments :: footer"></footer>
+</div><!--/ end wrapper-->
+
+</body>
+
+</html>
